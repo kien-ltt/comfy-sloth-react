@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { PageHero } from '../components';
 import { useCartContext } from '../context/cart_context';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutPage = () => {
   const { cart, clearCart } = useCartContext();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -32,7 +32,7 @@ const CheckoutPage = () => {
               onClick={() => {
                 alert('Checkout successfully!');
                 clearCart();
-                history.replace('/');
+                navigate('/', { replace: true });
               }}
             >
               press to pay
